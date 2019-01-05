@@ -1,1 +1,1 @@
-echo iroyzhang.com > CNAME
+www.iroyzhang.com
