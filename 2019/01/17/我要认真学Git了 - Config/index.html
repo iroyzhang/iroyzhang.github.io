@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-me.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hello, I'm Roy Zhang">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="有一天，当我像往常一样打开SourceTree提交代码，然后推送的时候，我突然意识到我只是根据肌肉记忆完成这个过程，我压根不知道这其中到底发生了什么。这是个很严重的问题，作为一个技术人员，居然只满足于使用工具，而对工具的原理毫无探索，于是我进行了很深刻的反思。 我觉得一个好知的人不只是要知其然，更要知其所以然，所以我会认真的学习Git，并探索Git的背后原理。 注：以下操作都是在OS X系统下进行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我要认真学git了-Config">
+<meta property="og:url" content="http://www.iroyzhang.com/2019/01/17/我要认真学Git了 - Config/index.html">
+<meta property="og:site_name" content="Roy Zhang">
+<meta property="og:description" content="有一天，当我像往常一样打开SourceTree提交代码，然后推送的时候，我突然意识到我只是根据肌肉记忆完成这个过程，我压根不知道这其中到底发生了什么。这是个很严重的问题，作为一个技术人员，居然只满足于使用工具，而对工具的原理毫无探索，于是我进行了很深刻的反思。 我觉得一个好知的人不只是要知其然，更要知其所以然，所以我会认真的学习Git，并探索Git的背后原理。 注：以下操作都是在OS X系统下进行">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-17T14:50:31.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我要认真学git了-Config">
+<meta name="twitter:description" content="有一天，当我像往常一样打开SourceTree提交代码，然后推送的时候，我突然意识到我只是根据肌肉记忆完成这个过程，我压根不知道这其中到底发生了什么。这是个很严重的问题，作为一个技术人员，居然只满足于使用工具，而对工具的原理毫无探索，于是我进行了很深刻的反思。 我觉得一个好知的人不只是要知其然，更要知其所以然，所以我会认真的学习Git，并探索Git的背后原理。 注：以下操作都是在OS X系统下进行">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.iroyzhang.com/2019/01/17/我要认真学Git了 - Config/">
+
+
+
+
+
+  <title>我要认真学git了-Config | Roy Zhang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Roy Zhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iroyzhang.com/2019/01/17/我要认真学Git了 - Config/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Roy Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roy Zhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我要认真学git了-Config</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-17T22:48:18+08:00">
+                2019-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/dev/" itemprop="url" rel="index">
+                    <span itemprop="name">dev</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>有一天，当我像往常一样打开SourceTree提交代码，然后推送的时候，我突然意识到我只是根据肌肉记忆完成这个过程，我压根不知道这其中到底发生了什么。这是个很严重的问题，作为一个技术人员，居然只满足于使用工具，而对工具的原理毫无探索，于是我进行了很深刻的反思。</p>
+<p>我觉得一个好知的人不只是要知其然，更要知其所以然，所以我会认真的学习Git，并探索Git的背后原理。</p>
+<p>注：<br>以下操作都是在OS X系统下进行的，我强烈建议动手实践，去折腾，去探索</p>
+<h3 id="配置信息"><a href="#配置信息" class="headerlink" title="配置信息"></a>配置信息</h3><p>我相信这是所有人的第一步，配置自己的名称和邮箱：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;iroyzhang&quot;	</span><br><span class="line">$ git config --global user.email iroyzhang@icloud.com</span><br><span class="line">名称有双引号，而邮箱没有，我这是根据官方文档来的，实际上有或者没有都是可以的</span><br><span class="line"></span><br><span class="line">扩展命令：</span><br><span class="line">git config --global --list  // 查看当前用户Git配置变量</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">1.每台计算机上只需要配置一次，程序升级时会保留配置信息，可以在任何时候再次通过运行命令来修改它们</span><br><span class="line">2.每一个Git的提交都会使用这些信息，并写入到每一次提交中</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>上面配置了名字和邮箱地址，既然只需要配置一次，那说明git config肯定把配置信息保存到了某个地方，下面来找到它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~	// 进入当前用户目录（一般打开Terminal就是了）</span><br><span class="line">$ ls -a	// 文件默认是隐藏的，此命令可显示出配置文件，名称为. gitconfig</span><br><span class="line">$ open -t .gitconfig	//	通过文本编辑器打开，当然也可以用Vim打开</span><br><span class="line">打开文件后，所有上面git config配置的信息都会在里面</span><br><span class="line"></span><br><span class="line">git config：</span><br><span class="line">git config可以把配置的信息保存到配置文件里，也可以使用git config查看配置文件的内容，说明它可以读写配置文件</span><br><span class="line"></span><br><span class="line">扩展命令：</span><br><span class="line">git config --gloabl user.name	// 查看当前用户配置的用户名</span><br><span class="line">git config --gloabl --unset user.name // 删除当前用户用户名</span><br></pre></td></tr></table></figure></p>
+<h3 id="–global的作用"><a href="#–global的作用" class="headerlink" title="–global的作用"></a>–global的作用</h3><p>一台电脑会有多个用户，如果这几个用户是不同的人，那他们的名字和邮箱肯定是不同的，所以每个用户都需要定制自己的Git配置环境：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">先按以下输入：</span><br><span class="line">$ git config</span><br><span class="line">这时会显示所有git config的选项，其中有一组分类叫做Config file location，其中包含--gloabl、--system、--local</span><br><span class="line"></span><br><span class="line">--global	// 使用全局的配置文件</span><br><span class="line">--system  // 使用系统的配置文件</span><br><span class="line">--local	// 使用仓库的配置文件</span><br><span class="line">Config file location的意思就是配置文件的路径，也就说上面的这些选项可以让git config读写不同路径的配置文件</span><br><span class="line"></span><br><span class="line">git config --list</span><br><span class="line">上面这个查看命令因为没有指定读取哪个配置文件，所以会读取多个配置文件，变量信息可能会重复</span><br><span class="line"></span><br><span class="line">扩展命令：</span><br><span class="line">git help config // 查看config帮助，进入后可键入q以退出</span><br><span class="line">git config --help // 同上一样效果</span><br><span class="line">git config --local --list	 // 查看本地仓库的Git配置</span><br><span class="line">git config  --system --list // 查看系统的通用Git配置</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">1.--system的配置文件在根目录下，即/etc，文件名称为gitconfig</span><br><span class="line">2.--local的配置文件在当前工作目录的.git目录下，文件名称为config</span><br><span class="line">3.local的配置文件优先级大于global的配置文件，global的配置文件优先级大于system的配置文件</span><br><span class="line">4.在仓库下，git config缺省选项时，默认使用--local，仓库的配置信息可以被任意修改</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改文本编辑器"><a href="#修改文本编辑器" class="headerlink" title="修改文本编辑器"></a>修改文本编辑器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">当把改动添加到暂存区后，执行以下命令：</span><br><span class="line">git commit</span><br><span class="line">这时就会显示文本编辑器</span><br><span class="line"></span><br><span class="line">指定文本编辑器为vim（mac电脑默认的是vim，不指定也行）</span><br><span class="line">$ git config --global core.editor vim</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">如果没有指定文本编辑器，Git会使用系统默认文本编辑器</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/13/iOS开发的底线-崩溃/" rel="next" title="iOS开发的底线-崩溃">
+                <i class="fa fa-chevron-left"></i> iOS开发的底线-崩溃
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Roy Zhang">
+            
+              <p class="site-author-name" itemprop="name">Roy Zhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置信息"><span class="nav-number">1.</span> <span class="nav-text">配置信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">2.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–global的作用"><span class="nav-number">3.</span> <span class="nav-text">–global的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文本编辑器"><span class="nav-number">4.</span> <span class="nav-text">修改文本编辑器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Roy Zhang</span>
+
+  
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
