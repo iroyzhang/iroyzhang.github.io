@@ -1,47 +1,716 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head><meta name="generator" content="Hexo 3.8.0">
-    <title></title>
-    <meta charset="utf-8">
-    <style>
-      #introduction {
-        /* background-color: gray; */
-        text-align: center;
-        margin: 80px auto;
-        width: 600px;
-        height: 800px;
-      }
-      #basicInfo {
-        /* text-align: center; */
-      }
-      #avatar {
-        border-radius: 50px;
-      }
-      #name {
-        font-size: 28px;
-        font-weight: bold;
-      }
-      #detailInfo {
-        margin-top: 5px;
-        color: rgba(120, 120, 120, 1.0);
-      }
-      #mainInfo {
 
-      }
-    </style>
-  </head>
-  <body>
-    <div id="introduction">
-      <div id="basicInfo">
-        <img id="avatar" src="avatar.jpeg" style="width:100px;height:100px">
-        <div id="name">Roy Zhang</div>
-      </div>
-      <div id="detailInfo">
-        我只愿意和我喜欢的事物在一起
-      </div>
-      <div id="mainInfo" style="margin:30px auto">
-        你好，我是Roy Zhang。我是万千追梦者中的一员，在这个大大的世界一步步努力完成自己小小的梦想，而这里会留下我逐梦的足迹。
-      </div>
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-me.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/me-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/me-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hello, I'm Roy Zhang">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言作为一个刚毕业从事iOS开发不久的人，最初同事以及导师都叮嘱我写代码的时候一定要注意异常情况，底线就是不能写出任何有可能造成崩溃的代码。实际上，项目中有监测崩溃的工具，而且review的时候也会很严格检查，所以基本上那种有可能造成崩溃的代码基本都会在上线前修正。 但就在前些天，客户端发生了大面积一打开就闪退的问题，影响非常严重，后来查出是引入的其他部门的SDK没有进行类型判断而导致的崩溃。或许">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发的底线-崩溃">
+<meta property="og:url" content="http://www.iroyzhang.com/2019/01/13/iOS开发的底线-崩溃/index.html">
+<meta property="og:site_name" content="Roy Zhang">
+<meta property="og:description" content="前言作为一个刚毕业从事iOS开发不久的人，最初同事以及导师都叮嘱我写代码的时候一定要注意异常情况，底线就是不能写出任何有可能造成崩溃的代码。实际上，项目中有监测崩溃的工具，而且review的时候也会很严格检查，所以基本上那种有可能造成崩溃的代码基本都会在上线前修正。 但就在前些天，客户端发生了大面积一打开就闪退的问题，影响非常严重，后来查出是引入的其他部门的SDK没有进行类型判断而导致的崩溃。或许">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-13T09:49:13.298Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发的底线-崩溃">
+<meta name="twitter:description" content="前言作为一个刚毕业从事iOS开发不久的人，最初同事以及导师都叮嘱我写代码的时候一定要注意异常情况，底线就是不能写出任何有可能造成崩溃的代码。实际上，项目中有监测崩溃的工具，而且review的时候也会很严格检查，所以基本上那种有可能造成崩溃的代码基本都会在上线前修正。 但就在前些天，客户端发生了大面积一打开就闪退的问题，影响非常严重，后来查出是引入的其他部门的SDK没有进行类型判断而导致的崩溃。或许">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.iroyzhang.com/2019/01/13/iOS开发的底线-崩溃/">
+
+
+
+
+
+  <title>iOS开发的底线-崩溃 | Roy Zhang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Roy Zhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-  </body>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.iroyzhang.com/2019/01/13/iOS开发的底线-崩溃/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Roy Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roy Zhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS开发的底线-崩溃</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T17:43:22+08:00">
+                2019-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/dev/" itemprop="url" rel="index">
+                    <span itemprop="name">dev</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>作为一个刚毕业从事iOS开发不久的人，最初同事以及导师都叮嘱我写代码的时候一定要注意异常情况，底线就是不能写出任何有可能造成崩溃的代码。实际上，项目中有监测崩溃的工具，而且review的时候也会很严格检查，所以基本上那种有可能造成崩溃的代码基本都会在上线前修正。</p>
+<p>但就在前些天，客户端发生了大面积一打开就闪退的问题，影响非常严重，后来查出是引入的其他部门的SDK没有进行类型判断而导致的崩溃。或许是开发人员的不小心，但我觉得更多的是平时没有养成习惯，没有考虑到对于一个拥有千万级别用户的应用来说，即使是万分之一的崩溃概率，也会有数千个用户崩溃，这在竞争激烈的互联网市场，是不能被容忍的。</p>
+<p>我平时也没有过度重视，因为我总觉得理论上应该不可能崩溃，但是实际的场景太多，理论上不可能并不是百分百不可能，作为足够严谨的开发人员，必须守住自己的底线，不只是知道什么情况会造成崩溃，而是要养成一种编程习惯，所以特意分析了各种崩溃的情况。</p>
+<h3 id="数组越界"><a href="#数组越界" class="headerlink" title="数组越界"></a>数组越界</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">NSArray *firstNames = @[@&quot;Roy&quot;, @&quot;Mike&quot;, @&quot;Jordan&quot;];</span><br><span class="line">NSString *name = firstNames[3];	// 崩溃</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSRangeException&apos;, reason: &apos;*** -[__NSArrayI objectAtIndexedSubscript:]: index 3 beyond bounds [0 .. 2]&apos; *****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">可以看出当前数组的范围是0..2，当前下标超出了范围，即访问了未知的内存空间</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">除了数组可能越界之外，字符串也有可能越界，例如执行substringWithRange:消息时如果传递了过大的范围也会崩溃</span><br></pre></td></tr></table></figure>
+<h3 id="字面量数组和字典插入nil值"><a href="#字面量数组和字典插入nil值" class="headerlink" title="字面量数组和字典插入nil值"></a>字面量数组和字典插入nil值</h3><h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NSString *name;</span><br><span class="line">NSArray *firstNames = @[@&quot;Roy&quot;, @&quot;Mike&quot;, @&quot;Jordan&quot;, name];	//崩溃</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;*** -[__NSPlaceholderArray initWithObjects:count:]: attempt to insert nil object from objects[3]&apos;*</span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">通过崩溃信息可以很清楚看到是因为在字典初始化的时候插入了nil，实际上字面量语法是一种语法糖，本质是先创建了一个数组，然后把方括号内的所有对象添加到这个数组中</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">字面量语法让代码更加简洁，也能及时发现错误，但是最后创建的数组是不可变的</span><br></pre></td></tr></table></figure>
+<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NSNumber *jordanAge;</span><br><span class="line">NSDictionary *ages = @&#123;@&quot;Roy&quot;:@22, @&quot;Mike&quot;:@24, @&quot;Jordan&quot;:jordanAge&#125;;		//崩溃</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;*** -[__NSPlaceholderDictionary initWithObjects:forKeys:count:]: attempt to insert nil object from objects[2]&apos;*</span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">同上面原因一样，都是插入了nil而导致的崩溃</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">当key为nil的时候插入也会崩溃</span><br></pre></td></tr></table></figure>
+<h3 id="Unrecognized-Selector"><a href="#Unrecognized-Selector" class="headerlink" title="Unrecognized Selector"></a>Unrecognized Selector</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">id person = @&quot;person&quot;;</span><br><span class="line">[person objectForKey:@&quot;name&quot;];	//崩溃</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;-[__NSCFConstantString objectForKey:]: unrecognized selector sent to instance 0x1000010e8&apos;*</span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">person对象无法执行objectForKey:消息，所以最后崩溃了</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">在用Objective-C语言编码时，我们会常常使用id类型更加便利地声明变量，但在执行消息前一定要确定它是否能响应，可使用respondsToSelector:检查。最常见的场景是调用代理方法，即使指定了代理对象，也不一定保证代理实现了相应方法（协议里还有可选实现的方法）</span><br></pre></td></tr></table></figure>
+<h3 id="NaN崩溃"><a href="#NaN崩溃" class="headerlink" title="NaN崩溃"></a>NaN崩溃</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">float number = NAN;</span><br><span class="line">NSDictionary *dict = @&#123;@&quot;value&quot; : @(number)&#125;;</span><br><span class="line">NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingSortedKeys error:nil];</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;Invalid number value (NaN) in JSON write&apos;*</span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">可以先来判断dict对象是否能被转换成JSON数据：</span><br><span class="line">BOOL isValidJSONObject = [NSJSONSerialization isValidJSONObject:dict];</span><br><span class="line">isValidJSONObject的结果是NO，也就是dict对象无法被转换为JSON数据，即NaN类型不能被用于JSON对象中</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">当进行不正常的数学运算时不只是会产生NaN类型，也有可能产生+inf类型，虽然并不会直接造成崩溃，但有可能在用它们进行其他操作的时候会有可能造成崩溃。通过isnan(x)和isinf(x)方法可以判断nan和inf类型</span><br></pre></td></tr></table></figure>
+<h3 id="富文本初始化时字符串为空"><a href="#富文本初始化时字符串为空" class="headerlink" title="富文本初始化时字符串为空"></a>富文本初始化时字符串为空</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">NSString *text;</span><br><span class="line">NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:text]; // 崩溃</span><br><span class="line"></span><br><span class="line">崩溃信息：</span><br><span class="line">**** Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;NSConcreteAttributedString initWithString:: nil value&apos;*</span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">从崩溃信息中可以很明显看到是因为传入的变量值为nil而崩溃</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">构造NSMutableString时，如果传入的字符串为nil也会崩溃</span><br></pre></td></tr></table></figure>
+<h3 id="创建未注册过的UITableViewCell"><a href="#创建未注册过的UITableViewCell" class="headerlink" title="创建未注册过的UITableViewCell"></a>创建未注册过的UITableViewCell</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">UITableViewCell *cell = [tableView    </span><br><span class="line">dequeueReusableCellWithIdentifier:@&quot;reuseIdentifier&quot; </span><br><span class="line">forIndexPath:indexPath]	// 崩溃</span><br></pre></td></tr></table></figure>
+<h3 id="服务器端出现问题而造成的崩溃"><a href="#服务器端出现问题而造成的崩溃" class="headerlink" title="服务器端出现问题而造成的崩溃"></a>服务器端出现问题而造成的崩溃</h3><p>有一种情况，就是服务器端传递数据给客户端，客户端将其解析成模型对象，然后取模型里的值插入字面量语法构造的数组或者字典中。如果服务器端发生了问题，而客户端没有保护措施就会受到连累，当然实际上服务器端百分之九十九的概率是不可能发生问题的，所以很多人（包括我）也理所当然不会去特意多写一些多余的防御性代码。<br>我上面只是举了一个例子，一般我们都会和服务器端约定好数据格式以及其他细节，而且大多数时候都会做一些保护，但我真正想强调的是<em>客户端不崩溃一定优于客户端依赖于服务器端而不崩溃</em>，尽可能避免受到外界的影响</p>
+<h3 id="其他崩溃"><a href="#其他崩溃" class="headerlink" title="其他崩溃"></a>其他崩溃</h3><ol>
+<li>在iOS 9.0之后NSNotificationCenter不会对一个dealloc的观察者发送消息，所以如果应用最低版本是9.0，其实也不必每次都去移除通知，但如果需要支持更低的版本，还是一定要移除通知，否则会崩溃</li>
+<li>KVO不移除监听会导致奔溃，所以KVO的添加和移除必须成双成对</li>
+<li>内存泄露，最著名的是代理和被代理对象循环引用</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上都是我曾经遇到过的崩溃情况，当然还有很多我不知道的情况，毕竟技术是复杂的。我们或许可以使用一些工具来检查或者避免崩溃，但我还是想强调平时对待代码要更加严谨，对待负责的项目要更有责任感</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/2018刚刚走了/" rel="next" title="2018刚刚走了">
+                <i class="fa fa-chevron-left"></i> 2018刚刚走了
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/我要认真学Git了 - Config/" rel="prev" title="我要认真学git了-Config">
+                我要认真学git了-Config <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Roy Zhang">
+            
+              <p class="site-author-name" itemprop="name">Roy Zhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组越界"><span class="nav-number">2.</span> <span class="nav-text">数组越界</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量数组和字典插入nil值"><span class="nav-number">3.</span> <span class="nav-text">字面量数组和字典插入nil值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">3.1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">3.2.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unrecognized-Selector"><span class="nav-number">4.</span> <span class="nav-text">Unrecognized Selector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NaN崩溃"><span class="nav-number">5.</span> <span class="nav-text">NaN崩溃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#富文本初始化时字符串为空"><span class="nav-number">6.</span> <span class="nav-text">富文本初始化时字符串为空</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建未注册过的UITableViewCell"><span class="nav-number">7.</span> <span class="nav-text">创建未注册过的UITableViewCell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端出现问题而造成的崩溃"><span class="nav-number">8.</span> <span class="nav-text">服务器端出现问题而造成的崩溃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他崩溃"><span class="nav-number">9.</span> <span class="nav-text">其他崩溃</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">10.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Roy Zhang</span>
+
+  
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
